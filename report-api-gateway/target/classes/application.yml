@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: report-api-gateway
+
+  ##GATEWAY CONFIGURATIONS
+
+  cloud:
+    gateway:
+      routes:
+        ## service1
+        - id: reporting
+          uri: lb://reporting
+          predicates:
+            - Path=/reporting/**
+
+server:
+  port: 9003
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
