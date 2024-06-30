@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: order-api-gateway
+
+  ##GATEWAY CONFIGURATIONS
+
+  cloud:
+    gateway:
+      routes:
+        ## service1
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/order/**
+
+server:
+  port: 9002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
